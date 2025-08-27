@@ -4,6 +4,9 @@ package com.mojaneworks;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-            System.out.println("Gqhibimama");
+            Deck newDeck = new Deck();
+            newDeck.setDeckCards();
+            int pointCount = newDeck.getDeckCards().get(39).getPointCount();
+            System.out.println(pointCount);
         }
     }
