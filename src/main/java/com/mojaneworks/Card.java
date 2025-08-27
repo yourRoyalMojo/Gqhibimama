@@ -6,10 +6,19 @@ public class Card {
 
     private String cardSuit;
 
+    private int pointCount = 0;
+
     public Card(int cardNumber, String cardSuit){
 
         this.cardNumber = cardNumber;
         this.cardSuit = cardSuit;
+    }
+
+    public Card(int cardNumber, String cardSuit, int pointCount){
+
+        this.cardNumber = cardNumber;
+        this.cardSuit = cardSuit;
+        this.pointCount = pointCount;
     }
 
     public int getCardNumber(){
