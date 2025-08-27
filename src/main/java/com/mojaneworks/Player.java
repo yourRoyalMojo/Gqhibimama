@@ -10,7 +10,7 @@ public class Player {
 
     private PlayerBuild playerBuild;
 
-    private PlayerHand playerHand;
+    private PlayerHand playerHand = new PlayerHand();
 
     public Player(int playerNumber){
 
@@ -22,10 +22,6 @@ public class Player {
         this.playerBuild = playerBuild;
     }
 
-    public void setPlayerHand(PlayerHand playerHand) {
-
-        this.playerHand = playerHand;
-    }
 
     public void setPlayerBin(ArrayList<Card> playerBin) {
 

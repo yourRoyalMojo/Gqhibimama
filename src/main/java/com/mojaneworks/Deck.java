@@ -16,6 +16,7 @@ public class Deck {
         suits.add("Clubs");
         suits.add("Spades");
         suits.add("Diamonds");
+        setDeckCards();
 
     }
 

@@ -6,14 +6,13 @@ public class PlayerHand {
 
     private int handCount;
 
-    private ArrayList<Card> handCards;
+    private ArrayList<Card> handCards = new ArrayList<>();
 
     private boolean isFinished = false;
 
-    public PlayerHand(ArrayList<Card> handCards){
+    public PlayerHand(){
 
         this.handCount = 10;
-        this.handCards = handCards;
     }
 
     public void setHandCount(){
@@ -24,6 +23,7 @@ public class PlayerHand {
     public void useCard(Card cardToUse){
 
         this.handCards.remove(cardToUse);
+        setHandCount();
     }
 
     public void setFinished() {
