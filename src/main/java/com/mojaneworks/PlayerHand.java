@@ -8,8 +8,6 @@ public class PlayerHand {
 
     private ArrayList<Card> handCards = new ArrayList<>();
 
-    private boolean isFinished = false;
-
     public PlayerHand(){
 
         this.handCount = 10;
@@ -26,20 +24,12 @@ public class PlayerHand {
         setHandCount();
     }
 
-    public void setFinished() {
-
-        this.isFinished = true;
-    }
 
     public ArrayList<Card> getHandCards() {
 
         return this.handCards;
     }
-
-    public boolean getIsFinished() {
-
-        return this.isFinished;
-    }
+    
 
     public int getHandCount() {
 

@@ -2,6 +2,7 @@ package com.mojaneworks;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Table {
 
@@ -55,5 +56,19 @@ public class Table {
             }
 
         }
+    }
+
+    public void play(){
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("enter 'build' or 'toss' and the card position you want to use");
+        String playerInput = input.nextLine();
+
+        if (playerInput.contains("toss")){
+
+            String[] splitList = playerInput.split(" ");
+            playerHand.useCard(playerHand.getHandCards().get(Integer.parseInt(splitList[1])));
+        }
+
     }
 }
