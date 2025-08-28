@@ -8,7 +8,7 @@ public class Table {
 
     private final ArrayList<Player> players = new ArrayList<>();
 
-    private ArrayList<Card> tableCards;
+    private ArrayList<Card> tableCards = new ArrayList<>();
 
     private final Deck cardDeck = new Deck();
 
@@ -36,6 +36,11 @@ public class Table {
         return players;
     }
 
+    public ArrayList<Card> getDeckCards(){
+
+        return this.cardDeck.getDeckCards();
+    }
+
     public void dealCards() {
 
         while (players.get(0).getPlayerHand().getHandCards().size() < 10 &&
@@ -58,17 +63,19 @@ public class Table {
         }
     }
 
-    public void play(){
+    public void startTurn(){
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("enter 'build' or 'toss' and the card position you want to use");
-        String playerInput = input.nextLine();
+        while (players.get(0).getPlayerHand().getHandCount() > 0 &&
+                players.get(1).getPlayerHand().getHandCount() > 0 &&
+                !cardDeck.getDeckCards().isEmpty()){
 
-        if (playerInput.contains("toss")){
+                for(Player currentPlayer : players){
 
-            String[] splitList = playerInput.split(" ");
-            playerHand.useCard(playerHand.getHandCards().get(Integer.parseInt(splitList[1])));
+                    Turn newTurn = new Turn(currentPlayer, tableCards);
+                    newTurn.takeTurn();
+                    this.tableCards = newTurn.getTableCards();
+                }
+
         }
-
     }
 }

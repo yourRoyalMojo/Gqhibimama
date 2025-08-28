@@ -7,10 +7,7 @@ public class Main {
             int numberOfPlayers = 2;
             Table newTable = new Table(numberOfPlayers);
             newTable.dealCards();
+            newTable.startTurn();
 
-        while (newTable.getPlayers().get(0).getPlayerHand().getHandCount() > 0 &&
-                newTable.getPlayers().get(1).getPlayerHand().getHandCount() > 0){
-
-            }
         }
     }
