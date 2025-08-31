@@ -28,14 +28,21 @@ public class Turn {
         }
 
         if (!this.tableCards.isEmpty() && playerInput.equalsIgnoreCase("build")){
-            System.out.println("Choose a card from the following: ");
-            for (Card card : tableCards){
 
-                System.out.println(card);
+            System.out.println("Your hand: ");
+            for (Card card : currentPlayer.getPlayerHand().getHandCards()){
+
+                System.out.println(card.getCardNumber() + " of " + card.getCardSuit());
             }
-            System.out.println("e.g '2 Spades'");
+            System.out.println("____________________________________________");
 
-        } else if (this.tableCards.isEmpty()) {
+            System.out.println("Cards on table:");
+            for (Card card : this.tableCards){
+
+                System.out.println(card.getCardNumber() + " of " + card.getCardSuit());
+            }
+
+        } else if (this.tableCards.isEmpty() && playerInput.equalsIgnoreCase("build")) {
 
             System.out.println("No cards on the table. 'toss' a card in your hand.");
             System.out.println("e.g '2 Spades'");
@@ -47,35 +54,61 @@ public class Turn {
 
             String correctInput = input.nextLine();
             ArrayList<Card> playerHand = currentPlayer.getPlayerHand().getHandCards();
-            while (true) {
+            playToss(correctInput, playerHand);
+        }
 
-                boolean cardFound = false;
-                String cardSuit = correctInput.split(" ")[1];
-                String cardNumber = correctInput.split(" ")[0];
+        else if (playerInput.equalsIgnoreCase("toss")) {
+
+            System.out.println("Your hand: \n");
+
+            for (Card card : currentPlayer.getPlayerHand().getHandCards()){
+
+                System.out.println(card.getCardNumber() + " of " + card.getCardSuit());
+            }
+
+            String correctInput = input.nextLine();
+            ArrayList<Card> playerHand = currentPlayer.getPlayerHand().getHandCards();
+            playToss(correctInput, playerHand);
+        }
+    }
+
+    public void playToss(String correctInput, ArrayList<Card> playerHand){
+
+        Scanner input = new Scanner(System.in);
+        while (true) {
+
+            boolean cardFound = false;
+            String cardSuit = correctInput.split(" ")[1];
+            String cardNumber = correctInput.split(" ")[0];
 
 
-                for (int i = 0; i < playerHand.size(); i++) {
+            for (int i = 0; i < playerHand.size(); i++) {
 
-                    if (playerHand.get(i).getCardNumber() == Integer.parseInt(cardNumber) &&
-                            playerHand.get(i).getCardSuit().equalsIgnoreCase(cardSuit)) {
-                        System.out.println("Tossing the " +
-                                playerHand.get(i).getCardNumber() + " of " + playerHand.get(i).getCardSuit());
-                        this.tableCards.add(playerHand.get(i));
-                        currentPlayer.getPlayerHand().getHandCards().remove(playerHand.get(i));
-                        cardFound = true;
-                    }
-                }
-                if(!cardFound){
-                    System.out.println("card not in your hand. choose a card in your hand");
-                    System.out.println("i'm here");
-                    correctInput = input.nextLine();
-                }
-                else{
-
-                    break;
+                if (playerHand.get(i).getCardNumber() == Integer.parseInt(cardNumber) &&
+                        playerHand.get(i).getCardSuit().equalsIgnoreCase(cardSuit)) {
+                    System.out.println("Tossing the " +
+                            playerHand.get(i).getCardNumber() + " of " + playerHand.get(i).getCardSuit());
+                    this.tableCards.add(playerHand.get(i));
+                    currentPlayer.getPlayerHand().getHandCards().remove(playerHand.get(i));
+                    cardFound = true;
                 }
             }
+            if(!cardFound){
+                System.out.println("card not in your hand. choose a card in your hand");
+                System.out.println("i'm here");
+                correctInput = input.nextLine();
+            }
+            else{
+
+                break;
+            }
         }
+
+    }
+
+    public void playBuild(){
+
+
     }
 
     public Player getCurrentPlayer() {
