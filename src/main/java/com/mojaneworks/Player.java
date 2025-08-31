@@ -18,9 +18,9 @@ public class Player {
         this.playerNumber = playerNumber;
     }
 
-    public void setPlayerBuild(PlayerBuild playerBuild){
+    public void setPlayerBuild(int buildNumber){
 
-        this.playerBuild = playerBuild;
+        this.playerBuild =  new PlayerBuild(buildNumber);
     }
 
 

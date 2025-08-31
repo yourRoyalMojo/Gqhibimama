@@ -8,7 +8,7 @@ public class PlayerBuild {
 
     private boolean isClaimed = false;
 
-    private ArrayList<Card> buildCards;
+    private ArrayList<Card> buildCards = new ArrayList<>();
 
     public PlayerBuild(int buildNumber){
 
@@ -32,5 +32,15 @@ public class PlayerBuild {
     public void addToBuild(ArrayList<Card> cardsToAdd){
 
         this.buildCards.addAll(cardsToAdd);
+    }
+
+    public void addToBuild(Card cardToAdd){
+
+        this.buildCards.add(cardToAdd);
+    }
+
+    public ArrayList<Card> getBuildCards(){
+
+        return this.buildCards;
     }
 }
